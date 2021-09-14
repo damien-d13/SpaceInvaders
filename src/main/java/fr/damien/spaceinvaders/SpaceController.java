@@ -29,8 +29,11 @@ public class SpaceController {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-
                 handleShip();
+
+                if(ship.isShipIsShooting()) {
+                    handleShipShoot();
+                }
             }
         };
     }
@@ -65,7 +68,10 @@ public class SpaceController {
                 handleShip();
                 break;
             case SPACE:
-                System.out.println("space");
+                if (!ship.isShipIsShooting()) {
+                    ship.setShipIsShooting(true);
+                    shipShoot.shipShootPlacement(shipShoot, ship);
+                }
                 break;
         }
     }
@@ -78,7 +84,7 @@ public class SpaceController {
         if (shipShoot.getY() <= -20) {
             ship.setShipIsShooting(false);
         }else if (shipShoot.getY() >= -20) {
-            shipShoot.setY(shipShoot.getY() + Constants.SHIP_SHOOT_DELTAY);
+            shipShoot.setY(shipShoot.getY() - Constants.SHIP_SHOOT_DELTAY);
         }
     }
 
