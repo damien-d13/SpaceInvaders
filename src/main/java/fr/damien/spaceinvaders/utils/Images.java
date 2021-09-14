@@ -7,6 +7,7 @@ public class Images {
     public final static String PATH = "FILE:./src/main/resources/fr/damien/spaceinvaders/images/";
 
     public final static Image SHIP = new Image(PATH + "vaisseau.png");
+    public final static Image SHIP_SHOOT = new Image(PATH + "ship1Shoot.png");
 
 
 
