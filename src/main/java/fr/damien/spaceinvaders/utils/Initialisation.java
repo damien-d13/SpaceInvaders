@@ -22,7 +22,34 @@ public class Initialisation {
 
         for (int i = 0; i <= 3; i++ ) {
             for (int j = 0; j <= 6; j++) {
-                walls.add(new Brick(x, y, Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT, Images.BRICK_1));
+                walls.add(new Brick(x, y, Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT, Brick.setRandomBrick()));
+                x += 10;
+            }
+
+            x = xNextLine;
+            y += 10;
+        }
+        for (int i = 0; i <= 3; i++ ) {
+            for (int j = 0; j <= 6; j++) {
+                walls.add(new Brick(x + 120, y - 40, Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT, Brick.setRandomBrick()));
+                x += 10;
+            }
+
+            x = xNextLine;
+            y += 10;
+        }
+        for (int i = 0; i <= 3; i++ ) {
+            for (int j = 0; j <= 6; j++) {
+                walls.add(new Brick(x + 240, y - 80, Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT, Brick.setRandomBrick()));
+                x += 10;
+            }
+
+            x = xNextLine;
+            y += 10;
+        }
+        for (int i = 0; i <= 3; i++ ) {
+            for (int j = 0; j <= 6; j++) {
+                walls.add(new Brick(x + 360, y - 120, Constants.BRICK_WIDTH, Constants.BRICK_HEIGHT, Brick.setRandomBrick()));
                 x += 10;
             }
 
