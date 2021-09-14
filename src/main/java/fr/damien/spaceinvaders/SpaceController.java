@@ -1,5 +1,6 @@
 package fr.damien.spaceinvaders;
 
+import fr.damien.spaceinvaders.entities.Brick;
 import fr.damien.spaceinvaders.entities.Ship;
 import fr.damien.spaceinvaders.entities.ShipShoot;
 import fr.damien.spaceinvaders.utils.Constants;
@@ -12,12 +13,16 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class SpaceController {
 
     private Ship ship;
     private ShipShoot shipShoot;
     private AnimationTimer timer;
     private static int shipDeltaX;
+    private List<Brick> walls;
 
     @FXML
     private Pane board;
@@ -41,8 +46,10 @@ public class SpaceController {
 
     public void initGame() {
         ship = new Ship(Constants.X_POS_INIT_SHIP, Constants.Y_POS_INIT_ShIP, Constants.SHIP_WIDTH, Constants.SHIP_HEIGHT);
-        lblEndGame.setText("");
         shipShoot = new ShipShoot(0 - Constants.SHIP_SHOOT_WIDTH , 0 - Constants.SHIP_SHOOT_HEIGHT, Constants.SHIP_SHOOT_WIDTH, Constants.SHIP_SHOOT_HEIGHT);
+        walls = new LinkedList<>();
+
+        lblEndGame.setText("");
     }
 
     @FXML
@@ -51,6 +58,7 @@ public class SpaceController {
         initGame();
         Initialisation.initShip(ship, board);
         Initialisation.initShipShoot(shipShoot, board);
+        Initialisation.initWalls(80, 400, 80, walls, board);
 
         timer.start();
 

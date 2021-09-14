@@ -28,4 +28,6 @@ public abstract class Entity extends Rectangle {
     public void setImgPattern(ImagePattern imgPattern) {
         this.imgPattern = imgPattern;
     }
+
+
 }

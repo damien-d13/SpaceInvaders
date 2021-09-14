@@ -21,4 +21,7 @@ public class Constants {
     public static final int SHIP_SHOOT_HEIGHT = 10;
     public static final int SHIP_SHOOT_DELTAY = 5;
 
+    /***********************************  BRICK  ***************************************/
+    public static final int BRICK_WIDTH = 10;
+    public static final int BRICK_HEIGHT = 10;
 }
