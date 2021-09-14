@@ -77,7 +77,7 @@ public class SpaceController {
     private void handleShipShoot() {
         if (shipShoot.getY() <= -20) {
             ship.setShipIsShooting(false);
-        }else if (shipShoot.getY() >= 20) {
+        }else if (shipShoot.getY() >= -20) {
             shipShoot.setY(shipShoot.getY() + Constants.SHIP_SHOOT_DELTAY);
         }
     }
