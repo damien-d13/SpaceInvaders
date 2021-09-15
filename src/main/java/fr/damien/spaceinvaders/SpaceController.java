@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class SpaceController {
 
                 if(ship.isShipIsShooting()) {
                     handleShipShoot();
+                    shipShootCollisions();
                 }
             }
         };
@@ -98,6 +100,29 @@ public class SpaceController {
 
     private void shipMoveHorizontal(int shipDeltaX) {
         ship.setX(ship.shipMoving(shipDeltaX));
+    }
+
+    private void shipShootCollisions() {
+        Brick brickToRemove = null;
+
+            for (Brick brick : walls) {
+                if (brick.getBoundsInParent().intersects(shipShoot.getBoundsInParent())) {
+                    shipShoot.setX(-10);
+                    shipShoot.setY(-10);
+
+                    ship.setShipIsShooting(false);
+
+                    brickToRemove = brick;
+
+
+                }
+            }
+
+        if (brickToRemove != null) {
+            walls.remove(brickToRemove);
+            board.getChildren().remove(brickToRemove);
+        }
+
     }
 
     @FXML
