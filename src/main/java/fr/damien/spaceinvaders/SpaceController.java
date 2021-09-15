@@ -113,8 +113,6 @@ public class SpaceController {
                     ship.setShipIsShooting(false);
 
                     brickToRemove = brick;
-
-
                 }
             }
 
