@@ -1,5 +1,6 @@
 package fr.damien.spaceinvaders;
 
+import fr.damien.spaceinvaders.entities.Alien;
 import fr.damien.spaceinvaders.entities.Brick;
 import fr.damien.spaceinvaders.entities.Ship;
 import fr.damien.spaceinvaders.entities.ShipShoot;
@@ -24,6 +25,7 @@ public class SpaceController {
     private AnimationTimer timer;
     private static int shipDeltaX;
     private List<Brick> walls;
+    private Alien[][] aliens;
 
     @FXML
     private Pane board;
@@ -50,6 +52,7 @@ public class SpaceController {
         ship = new Ship(Constants.X_POS_INIT_SHIP, Constants.Y_POS_INIT_ShIP, Constants.SHIP_WIDTH, Constants.SHIP_HEIGHT);
         shipShoot = new ShipShoot(0 - Constants.SHIP_SHOOT_WIDTH , 0 - Constants.SHIP_SHOOT_HEIGHT, Constants.SHIP_SHOOT_WIDTH, Constants.SHIP_SHOOT_HEIGHT);
         walls = new LinkedList<>();
+        aliens = new Alien[5][10];
 
         lblEndGame.setText("");
     }
@@ -61,6 +64,7 @@ public class SpaceController {
         Initialisation.initShip(ship, board);
         Initialisation.initShipShoot(shipShoot, board);
         Initialisation.initWalls(80, 400, 80, walls, board);
+        Initialisation.initAliens(aliens, board);
 
         timer.start();
 
