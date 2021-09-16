@@ -66,18 +66,18 @@ public class Initialisation {
         for (int column = 0; column < 10; column++) {
             aliens[0][column] = new Alien(Constants.X_POS_INIT_ALIEN +
                     (Constants.ALIEN_WIDTH + Constants.GAP_COLUMNS_ALIEN) * column,
-                    Constants.Y_POS_INIT_ALIEN , Constants.ALIEN_WIDTH, Constants.ALIEN_HEIGHT, Images.ALIEN_HIGH_1 );
+                    Constants.Y_POS_INIT_ALIEN , Constants.ALIEN_WIDTH, Constants.ALIEN_HEIGHT, Images.ALIEN_HIGH_1, 3 );
             for (int line = 1; line < 3; line++) {
                 aliens[line][column] = new Alien(Constants.X_POS_INIT_ALIEN +
                         (Constants.ALIEN_WIDTH + Constants.GAP_COLUMNS_ALIEN) * column,
                         Constants.Y_POS_INIT_ALIEN + (Constants.ALIEN_HEIGHT + Constants.GAP_LINES_ALIEN ) * line,
-                        Constants.ALIEN_WIDTH, Constants.ALIEN_HEIGHT, Images.ALIEN_MIDDLE_1 );
+                        Constants.ALIEN_WIDTH, Constants.ALIEN_HEIGHT, Images.ALIEN_MIDDLE_1, 2 );
             }
             for (int line = 3; line < 5; line++) {
                 aliens[line][column] = new Alien(Constants.X_POS_INIT_ALIEN +
                         (Constants.ALIEN_WIDTH + Constants.GAP_COLUMNS_ALIEN) * column,
                         Constants.Y_POS_INIT_ALIEN + (Constants.ALIEN_HEIGHT + Constants.GAP_LINES_ALIEN ) * line, Constants.ALIEN_WIDTH ,
-                        Constants.ALIEN_HEIGHT, Images.ALIEN_BOTTOM_1 );
+                        Constants.ALIEN_HEIGHT, Images.ALIEN_BOTTOM_1, 1 );
             }
         }
         for (int i = 0; i < 5; i++){

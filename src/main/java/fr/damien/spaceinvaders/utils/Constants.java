@@ -26,6 +26,7 @@ public class Constants {
     /***********************************  BRICK  ***************************************/
     public static final int BRICK_WIDTH = 10;
     public static final int BRICK_HEIGHT = 10;
+    public static final int BRICK_POINT = 5;
 
     /***********************************  ALIEN  ***************************************/
     public static final int ALIEN_WIDTH = 33;
@@ -36,7 +37,8 @@ public class Constants {
     public static final int GAP_LINES_ALIEN = 10;
     public static final int GAP_COLUMNS_ALIEN = 10;
 
-    public static final int ALIEN_DELTAX = 10;
+    public static final int ALIEN_DELTAX = 5;
     public static final int ALIEN_DELTAY = 20;
     public static final int ALIEN_SPEED = 1;
+    public static final int ALIEN_POINT = 10;
 }

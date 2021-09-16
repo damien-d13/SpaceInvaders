@@ -10,8 +10,9 @@ public class Alien extends Entity{
     private static boolean goRight = true;
     private static boolean alienPosition = true;
 
-
     private static int speed = Constants.ALIEN_SPEED;
+
+    private static int type;
 
 
     public Alien(double x, double y, double width, double height, Image image) {
@@ -19,6 +20,14 @@ public class Alien extends Entity{
         super.setImg(image);
         super.setImgPattern(new ImagePattern(super.getImg()));
         super.setFill(super.getImgPattern());
+    }
+
+    public Alien(double x, double y, double width, double height, Image image, int type) {
+        super(x, y, width, height);
+        super.setImg(image);
+        super.setImgPattern(new ImagePattern(super.getImg()));
+        super.setFill(super.getImgPattern());
+        this.type = type;
     }
 
     public static void aliensMoving(Alien[][] aliens) {
@@ -85,6 +94,10 @@ public class Alien extends Entity{
 
     public static void setSpeed(int speed) {
         Alien.speed = speed;
+    }
+
+    public static int getType() {
+        return type;
     }
 
 }
