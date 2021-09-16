@@ -9,7 +9,7 @@ public class Audio {
 
     public Audio(String soundPath) {
         this.audioClip = new AudioClip(soundPath);
-        this.audioClip.setVolume(0.03);
+        this.audioClip.setVolume(Constants.AUDIO_VOLULME);
     }
 
     private void play() {

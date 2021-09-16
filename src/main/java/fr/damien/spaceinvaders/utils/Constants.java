@@ -13,7 +13,7 @@ public class Constants {
     public static final int SHIP_HEIGHT = 24;
     public static final int X_POS_INIT_SHIP = (WINDOW_WIDTH - SHIP_WIDTH) / 2;
     public static final int Y_POS_INIT_ShIP = 500;
-    public static final int SHIP_DELTAX = 5;
+    public static final int SHIP_DELTAX = 2;
 
     public static final int SHIP_LEFT_WINDOW_LIMIT = 30;
     public static final int SHIP_RIGHT_WINDOW_LIMIT = 530;
@@ -41,4 +41,8 @@ public class Constants {
     public static final int ALIEN_DELTAY = 20;
     public static final int ALIEN_SPEED = 1;
     public static final int ALIEN_POINT = 10;
+
+    /***********************************  AUDIO  ***************************************/
+    public static final double AUDIO_VOLULME = 0.03;
+
 }
