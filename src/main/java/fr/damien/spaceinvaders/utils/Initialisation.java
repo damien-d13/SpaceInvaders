@@ -4,6 +4,7 @@ import fr.damien.spaceinvaders.entities.Alien;
 import fr.damien.spaceinvaders.entities.Brick;
 import fr.damien.spaceinvaders.entities.Ship;
 import fr.damien.spaceinvaders.entities.ShipShoot;
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 
 import java.util.List;
@@ -84,9 +85,10 @@ public class Initialisation {
                 board.getChildren().addAll(aliens[i][j]);
             }
         }
-//        for (Alien aliens : alien) {
-//
-//        }
 
+    }
+
+    public static void initExplosion(Group groupExplosion, Pane board) {
+        board.getChildren().add(groupExplosion);
     }
 }

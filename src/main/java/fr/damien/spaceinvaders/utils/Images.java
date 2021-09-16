@@ -27,6 +27,12 @@ public class Images {
     public final static Image ALIEN_BOTTOM_1 = new Image(PATH + "alienBottom1.png");
     public final static Image ALIEN_BOTTOM_2 = new Image(PATH + "alienBottom2.png");
 
-
+    public final static Image EX1 = new Image(PATH + "explosion1.png");
+    public final static Image EX2 = new Image(PATH + "explosion2.png");
+    public final static Image EX3 = new Image(PATH + "explosion3.png");
+    public final static Image EX4 = new Image(PATH + "explosion4.png");
+    public final static Image EX5 = new Image(PATH + "explosion5.png");
+    public final static Image EX6 = new Image(PATH + "explosion6.png");
+    public final static Image EX7 = new Image(PATH + "explosion7.png");
 
 }

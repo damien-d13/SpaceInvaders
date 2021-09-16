@@ -1,15 +1,13 @@
 package fr.damien.spaceinvaders;
 
-import fr.damien.spaceinvaders.entities.Alien;
-import fr.damien.spaceinvaders.entities.Brick;
-import fr.damien.spaceinvaders.entities.Ship;
-import fr.damien.spaceinvaders.entities.ShipShoot;
+import fr.damien.spaceinvaders.entities.*;
 import fr.damien.spaceinvaders.utils.Constants;
 import fr.damien.spaceinvaders.utils.Initialisation;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -26,6 +24,11 @@ public class SpaceController {
     private static int shipDeltaX;
     private List<Brick> walls;
     private Alien[][] aliens;
+    private static long movingAliensCount = 0;
+    private Group groupExplosion;
+
+
+
 
     @FXML
     private Pane board;
@@ -37,22 +40,38 @@ public class SpaceController {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                movingAliensCount++;
                 handleShip();
 
-                if(ship.isShipIsShooting()) {
+
+                if (ship.isShipIsShooting()) {
                     handleShipShoot();
                     shipShootCollisions();
                 }
+                //Lag effect
+                if (movingAliensCount % (100 - (10L * Alien.getSpeed())) == 0) {
+                    Alien.aliensMoving(aliens);
+                    System.out.println(Alien.getSpeed());
+
+                }
+
+
             }
+
+
         };
     }
 
 
     public void initGame() {
         ship = new Ship(Constants.X_POS_INIT_SHIP, Constants.Y_POS_INIT_ShIP, Constants.SHIP_WIDTH, Constants.SHIP_HEIGHT);
-        shipShoot = new ShipShoot(0 - Constants.SHIP_SHOOT_WIDTH , 0 - Constants.SHIP_SHOOT_HEIGHT, Constants.SHIP_SHOOT_WIDTH, Constants.SHIP_SHOOT_HEIGHT);
+        shipShoot = new ShipShoot(-Constants.SHIP_SHOOT_WIDTH, -Constants.SHIP_SHOOT_HEIGHT, Constants.SHIP_SHOOT_WIDTH, Constants.SHIP_SHOOT_HEIGHT);
         walls = new LinkedList<>();
         aliens = new Alien[5][10];
+
+        movingAliensCount = 0;
+
+        groupExplosion = new Group(Explosion.explode());
 
         lblEndGame.setText("");
     }
@@ -66,19 +85,21 @@ public class SpaceController {
         Initialisation.initWalls(80, 400, 80, walls, board);
         Initialisation.initAliens(aliens, board);
 
+
         timer.start();
 
     }
+
     @FXML
     void onKeyPressed(KeyEvent keyEvent) {
 
         switch (keyEvent.getCode()) {
             case LEFT:
-                shipDeltaX = - Constants.SHIP_DELTAX;
+                shipDeltaX = -Constants.SHIP_DELTAX;
                 handleShip();
                 break;
             case RIGHT:
-                shipDeltaX =  Constants.SHIP_DELTAX;
+                shipDeltaX = Constants.SHIP_DELTAX;
                 handleShip();
                 break;
             case SPACE:
@@ -97,7 +118,7 @@ public class SpaceController {
     private void handleShipShoot() {
         if (shipShoot.getY() <= -20) {
             ship.setShipIsShooting(false);
-        }else if (shipShoot.getY() >= -20) {
+        } else if (shipShoot.getY() >= -20) {
             shipShoot.setY(shipShoot.getY() - Constants.SHIP_SHOOT_DELTAY);
         }
     }
@@ -109,23 +130,46 @@ public class SpaceController {
     private void shipShootCollisions() {
         Brick brickToRemove = null;
 
-            for (Brick brick : walls) {
-                if (brick.getBoundsInParent().intersects(shipShoot.getBoundsInParent())) {
-                    shipShoot.setX(-10);
-                    shipShoot.setY(-10);
+        for (Brick brick : walls) {
+            if (brick.getBoundsInParent().intersects(shipShoot.getBoundsInParent())) {
+                shipShoot.setX(-10);
+                shipShoot.setY(-10);
 
-                    ship.setShipIsShooting(false);
+                ship.setShipIsShooting(false);
 
-                    brickToRemove = brick;
-                }
+                brickToRemove = brick;
             }
+        }
 
         if (brickToRemove != null) {
             walls.remove(brickToRemove);
             board.getChildren().remove(brickToRemove);
         }
 
+        for(Alien[] alienRow : aliens) {
+            for (Alien alien : alienRow) {
+                if (alien.getBoundsInParent().intersects(shipShoot.getBoundsInParent())) {
+                    shipShoot.setX(-10);
+                    shipShoot.setY(-10);
+
+                    ship.setShipIsShooting(false);
+
+
+                    groupExplosion = new Group(Explosion.explode());
+                    groupExplosion.setLayoutX(alien.getX() - 10);
+                    groupExplosion.setLayoutY(alien.getY() - 10);
+                    board.getChildren().addAll(groupExplosion);
+
+                    alien.setX(100);
+                    alien.setY(-1000);
+
+                    board.getChildren().remove(alien);
+                }
+            }
+        }
     }
+
+
 
     @FXML
     void onKeyReleased(KeyEvent keyEvent) {
