@@ -8,4 +8,6 @@ public class Sounds {
     public final static String SHIP_SHOOT_SOUND  = PATH + "shipShootSound.wav";
     public final static String ALIEN_DESTRUCTION_SOUND = PATH + "alienDeadSound.wav";
     public final static String SHIP_DESTRUCTION_SOUND = PATH + "shipDestructionSound.wav";
+
+    public final static String SAUCER_PASSING_SOUND = PATH + "saucerPassingSound.wav";
 }

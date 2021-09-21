@@ -9,7 +9,7 @@ public class Utility {
         boolean response = false;
         for (int column = 0; column < 10; column++) {
             for (int line = 0; line < 5; line++) {
-                if (aliens[line][column].getX() > Constants.WINDOW_WIDTH - Constants.ALIEN_WIDTH - Constants.WINDOW_MARGIN - Constants.ALIEN_DELTAX ) {
+                if (aliens[line][column].getX() > Constants.WINDOW_WIDTH - Constants.ALIEN_WIDTH - Constants.WINDOW_MARGIN - Constants.ALIEN_DELTA_X) {
                      response = true;
                      break;
                 }
@@ -22,7 +22,7 @@ public class Utility {
         boolean response = false;
         for (int column = 0; column < 10; column++) {
             for (int line = 0; line < 5; line++) {
-                if (aliens[line][column].getX() < Constants.WINDOW_MARGIN + Constants.ALIEN_DELTAX) {
+                if (aliens[line][column].getX() < Constants.WINDOW_MARGIN + Constants.ALIEN_DELTA_X) {
                     response = true;
                     break;
                 }

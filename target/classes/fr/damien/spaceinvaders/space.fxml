@@ -13,66 +13,66 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.damien.spaceinvaders.SpaceController">
    <children>
+      <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background.png" />
+         </image>
+      </ImageView>
       <Pane fx:id="board" prefHeight="600.0" prefWidth="600.0">
          <children>
-            <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/background.png" />
-               </image>
-            </ImageView>
             <Label fx:id="lblEndGame" alignment="CENTER" layoutY="222.0" prefHeight="78.0" prefWidth="600.0" textAlignment="CENTER" textFill="#08943b">
                <font>
                   <Font name="Agency FB Bold" size="83.0" />
                </font>
             </Label>
-            <Pane layoutY="530.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: black;">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="600.0">
-                     <children>
-                        <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#onStartAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: #08943b;" text="Start" textFill="#08943b">
-                           <HBox.margin>
-                              <Insets left="20.0" right="20.0" top="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Agency FB Bold" size="19.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onStopAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: red;" text="Stop" textFill="RED">
-                           <HBox.margin>
-                              <Insets right="20.0" top="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Agency FB Bold" size="19.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Label text="Score : " textFill="#08943b">
-                           <HBox.margin>
-                              <Insets left="280.0" top="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Agency FB" size="23.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblScore" text="2021" textFill="#08943b">
-                           <HBox.margin>
-                              <Insets left="20.0" top="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="Agency FB" size="23.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </Pane>
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffb00" height="5.0" stroke="#fff600" strokeType="INSIDE" width="540.0" x="30.0" y="530.0" />
+      <Pane layoutY="535.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: black;">
+         <children>
+            <HBox prefHeight="70.0" prefWidth="600.0">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#onStartAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: #08943b;" text="Start" textFill="#08943b">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Agency FB Bold" size="19.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onStopAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: red;" text="Stop" textFill="RED">
+                     <HBox.margin>
+                        <Insets right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Agency FB Bold" size="19.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label text="Score : " textFill="#08943b">
+                     <HBox.margin>
+                        <Insets left="280.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Agency FB" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblScore" text="2021" textFill="#08943b">
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Agency FB" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
    </children>
 </Pane>

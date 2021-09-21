@@ -35,4 +35,8 @@ public class Images {
     public final static Image EX6 = new Image(PATH + "explosion6.png");
     public final static Image EX7 = new Image(PATH + "explosion7.png");
 
+    public final static Image ALIEN_SHOOT = new Image(PATH + "aliensShoot2.png");
+
+    public final static Image SAUCER = new Image(PATH + "saucer.png");
+
 }
