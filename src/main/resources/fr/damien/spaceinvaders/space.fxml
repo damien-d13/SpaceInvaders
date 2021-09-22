@@ -25,6 +25,11 @@
                   <Font name="Agency FB Bold" size="83.0" />
                </font>
             </Label>
+            <ImageView fx:id="imgLogo" fitHeight="379.0" fitWidth="533.0" layoutX="82.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logoSpaceInvaders.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffb00" height="5.0" stroke="#fff600" strokeType="INSIDE" width="540.0" x="30.0" y="530.0" />
@@ -54,7 +59,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label text="Score : " textFill="#08943b">
+                  <Label fx:id="lblLeftScore" text="Score : " textFill="#08943b" visible="false">
                      <HBox.margin>
                         <Insets left="280.0" top="20.0" />
                      </HBox.margin>
@@ -62,7 +67,7 @@
                         <Font name="Agency FB" size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblScore" text="2021" textFill="#08943b">
+                  <Label fx:id="lblRightScore" text="0" textFill="#08943b" visible="false">
                      <HBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </HBox.margin>
