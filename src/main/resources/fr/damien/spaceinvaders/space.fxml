@@ -25,11 +25,6 @@
                   <Font name="Agency FB Bold" size="83.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgLogo" fitHeight="379.0" fitWidth="533.0" layoutX="82.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/logoSpaceInvaders.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffb00" height="5.0" stroke="#fff600" strokeType="INSIDE" width="540.0" x="30.0" y="530.0" />
@@ -79,5 +74,10 @@
             </HBox>
          </children>
       </Pane>
+      <ImageView fx:id="imgLogo" fitHeight="379.0" fitWidth="533.0" layoutX="80.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logoSpaceInvaders.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

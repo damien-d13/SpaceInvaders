@@ -3,6 +3,8 @@ package fr.damien.spaceinvaders;
 import fr.damien.spaceinvaders.entities.*;
 import fr.damien.spaceinvaders.utils.*;
 import javafx.animation.AnimationTimer;
+import javafx.animation.Interpolator;
+import javafx.animation.TranslateTransition;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -12,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -99,6 +102,9 @@ public class SpaceController implements Sounds, Constants, Images {
     @FXML
     void onStartAction() {
         if (!initStartButton) {
+
+            Animation.animateLogoSpaceInvaders(imgLogo, 0, -500, 500, 1, 0, 300);
+
             board.requestFocus();
             initGame();
             Initialisation.initShip(ship, board);
@@ -279,6 +285,9 @@ public class SpaceController implements Sounds, Constants, Images {
 
     @FXML
     void onStopAction() {
+
+
+
         timer.stop();
         initStartButton = false;
         walls.clear();
@@ -290,5 +299,6 @@ public class SpaceController implements Sounds, Constants, Images {
         }
         lblLeftScore.setVisible(false);
         lblRightScore.setVisible(false);
+        Animation.animateLogoSpaceInvaders(imgLogo, -500, 0, 500, 0, 1, 700);
     }
 }
