@@ -52,6 +52,7 @@ public class SpaceController implements Sounds, Constants, Images {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+
                 movingAliensCount++;
                 saucerTime++;
                 handleShip();
@@ -81,6 +82,72 @@ public class SpaceController implements Sounds, Constants, Images {
         };
     }
 
+//    public SpaceController() {
+//        timer = new AnimationTimer(){
+//            private final long SECOND_NANO = 1000000000;
+//            private int frameCount = 0;
+//            private float frameRate = 0;
+//            private long deltaTime = 0;
+//            private long timeCounter = 0;
+//            private long time = System.nanoTime();
+//
+//            private void before(long now) {
+//                deltaTime = now - time;
+//                timeCounter += deltaTime;
+//                if (timeCounter > SECOND_NANO) {
+//                    frameRate = frameCount;
+//                    frameCount = 0;
+//                    timeCounter %= SECOND_NANO;
+//                    System.out.println(frameRate);
+//                    System.out.println(deltaTime);
+//                }
+//            }
+//
+//            private void after(long now) {
+//                frameCount++;
+//                time = now;
+//            }
+//            private long lastUpdate = 0 ;
+//            @Override
+//            public void handle(long now) {
+//                if (now - lastUpdate >= FPS) {
+//                    before(now);
+//                    loop();
+//                    after(now);
+//                    lastUpdate = now ;
+//
+//                }
+//            }
+//        };
+//    }
+//
+//    public void loop() {
+//        movingAliensCount++;
+//        saucerTime++;
+//        handleShip();
+//
+//        collisions();
+//
+//        if (ship.isShipIsShooting()) {
+//            handleShipShoot();
+//        }
+//        //Lag effect
+//        if (movingAliensCount % (100 - (10L * Alien.getSpeed())) == 0) {
+//            Alien.aliensMoving(aliens);
+//        }
+//
+//        if (saucerTime % 400 == 0) {
+//            saucer = new Saucer(X_POS_INIT_SAUCER, Y_POS_INIT_SAUCER, SAUCER_WIDTH, SHIP_HEIGHT);
+//            board.getChildren().add(saucer);
+//            saucerTime = 1;
+//        } else if (saucer != null) {
+//            saucer.saucerMoving(SAUCER_DELTA_X);
+//        }
+//
+//        aliensShooting();
+//        AlienShoot.handleAliensShot(alienShootList, board);
+//
+//    }
 
     public void initGame() {
         ship = new Ship(X_POS_INIT_SHIP, Y_POS_INIT_ShIP, SHIP_WIDTH, SHIP_HEIGHT);

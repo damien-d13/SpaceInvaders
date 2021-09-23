@@ -6,6 +6,7 @@ public interface Constants {
      int WINDOW_WIDTH = 600;
      int WINDOW_HEIGHT = 600;
      int WINDOW_MARGIN = 50;
+     int FPS = 2_000_000;
 
 
     /******************************** SHIP   *********************************/
@@ -49,7 +50,7 @@ public interface Constants {
      int ALIEN_SHOOT_WIDTH = 10;
      int ALIEN_SHOOT_HEIGHT = 10;
      int ALIEN_SHOOT_DELTA_Y = 4;
-     int ALIEN_SHOOT_PROBABILITY = 2000;
+     int ALIEN_SHOOT_PROBABILITY = 6000;
 
     /***********************************  SAUCER  ***********************************************/
      int X_POS_INIT_SAUCER = WINDOW_WIDTH;
