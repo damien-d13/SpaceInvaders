@@ -10,4 +10,6 @@ public interface Sounds {
      String SHIP_DESTRUCTION_SOUND = PATH + "shipDestructionSound.wav";
 
      String SAUCER_PASSING_SOUND = PATH + "saucerPassingSound.wav";
+
+     String SAUCER_DESTRUCTION_SOUND = PATH + "saucerDestructionSound.wav";
 }

@@ -6,6 +6,8 @@ import fr.damien.spaceinvaders.entities.Ship;
 import fr.damien.spaceinvaders.entities.ShipShoot;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
@@ -90,5 +92,16 @@ public class Initialisation {
 
     public static void initExplosion(Group groupExplosion, Pane board) {
         board.getChildren().add(groupExplosion);
+    }
+
+    public static void initSaucer100(Rectangle saucer100Rect, Pane board) {
+        saucer100Rect.setWidth(Constants.SAUCER_WIDTH);
+        saucer100Rect.setHeight(Constants.SHIP_HEIGHT);
+        ImagePattern saucer100 = new ImagePattern(Images.SAUCER_100);
+        saucer100Rect.setFill(saucer100);
+        //Initial position out Pane
+        saucer100Rect.setX(Constants.X_POS_SAUCER_SCORE);
+        saucer100Rect.setY(Constants.Y_POS_SAUCER_SCORE);
+        board.getChildren().add(saucer100Rect);
     }
 }

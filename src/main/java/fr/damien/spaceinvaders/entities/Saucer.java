@@ -13,6 +13,11 @@ public class Saucer extends Entity {
     private AudioClip saucerPassingSound = new AudioClip(Sounds.SAUCER_PASSING_SOUND);
     private boolean isOnScreen;
 
+
+
+    private boolean isDead;
+
+
     public Saucer(double x, double y, double width, double height) {
         super(x, y, width, height);
         super.setImgPattern(new ImagePattern(Images.SAUCER));
@@ -20,6 +25,7 @@ public class Saucer extends Entity {
         this.saucerPassingSound.setVolume(0.02);
         this.saucerPassingSound.play();
         this.isOnScreen = false;
+        this.isDead = false;
     }
 
     public void saucerMoving(int deltaX) {
@@ -35,5 +41,12 @@ public class Saucer extends Entity {
 
     public  AudioClip getSaucerPassingSound() {
         return saucerPassingSound;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 }

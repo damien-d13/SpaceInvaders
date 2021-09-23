@@ -14,17 +14,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class SpaceController implements Sounds, Constants, Images {
 
     private Ship ship;
     private ShipShoot shipShoot;
-//    private final AnimationTimer timer;
+    //    private final AnimationTimer timer;
     private final FixedFrameRateTimer timer;
     private static int shipDeltaX;
     private List<Brick> walls;
@@ -37,6 +36,7 @@ public class SpaceController implements Sounds, Constants, Images {
     private static LinkedList<AlienShoot> alienShootList;
     private Saucer saucer;
     private long saucerTime = 0;
+    private static final Rectangle saucer100Rect = new Rectangle();
 
 
     @FXML
@@ -102,7 +102,7 @@ public class SpaceController implements Sounds, Constants, Images {
                     Alien.aliensMoving(aliens);
                 }
 
-                if (saucerTime % 400 == 0) {
+                if (saucerTime % 1000 == 0) {
                     saucer = new Saucer(X_POS_INIT_SAUCER, Y_POS_INIT_SAUCER, SAUCER_WIDTH, SHIP_HEIGHT);
                     board.getChildren().add(saucer);
                     saucerTime = 1;
@@ -112,7 +112,7 @@ public class SpaceController implements Sounds, Constants, Images {
 
                 aliensShooting();
                 AlienShoot.handleAliensShot(alienShootList, board);
-                System.out.println(getFrameRate());
+//                System.out.println(getFrameRate());
             }
         };
 
@@ -197,7 +197,7 @@ public class SpaceController implements Sounds, Constants, Images {
 
         score.set(0);
 
-        groupExplosion = new Group(Explosion.explode());
+//        groupExplosion = new Group(Explosion.explode());
 
         alienShootList = new LinkedList<>();
 
@@ -217,6 +217,7 @@ public class SpaceController implements Sounds, Constants, Images {
             Initialisation.initWalls(80, 400, 80, walls, board);
             Initialisation.initAliens(aliens, board);
 
+            Initialisation.initSaucer100(saucer100Rect, board );
 
             timer.start();
             lblRightScore.textProperty().bind(Bindings.convert(score));
@@ -319,7 +320,7 @@ public class SpaceController implements Sounds, Constants, Images {
         removeShoot(shootToRemove);
     }
 
-    private void removeBrick(Brick brickToRemove,boolean whoShoot) {
+    private void removeBrick(Brick brickToRemove, boolean whoShoot) {
         if (brickToRemove != null) {
             walls.remove(brickToRemove);
             board.getChildren().remove(brickToRemove);
@@ -368,7 +369,7 @@ public class SpaceController implements Sounds, Constants, Images {
                     board.getChildren().addAll(groupExplosion);
 
                     alien.setX(100);
-                    alien.setY(-1000);
+                    alien.setY(1000);
 
                     alien.setDead(true);
 
@@ -379,6 +380,44 @@ public class SpaceController implements Sounds, Constants, Images {
                 }
             }
         }
+        if (saucer != null) {
+            if (!saucer.isDead()) {
+                if (saucer.getBoundsInParent().intersects(shipShoot.getBoundsInParent())) {
+                    saucer.setDead(true);
+                    board.getChildren().remove(saucer);
+                    shipShoot.setY(-10);
+                    shipShoot.setX(-10);
+
+                    Audio.playSound(SAUCER_DESTRUCTION_SOUND);
+
+                    groupExplosion = new Group(Explosion.explode());
+                    groupExplosion.setLayoutX(saucer.getX() - (double) (SAUCER_WIDTH / 3));
+                    groupExplosion.setLayoutY(saucer.getY() - (double) (SAUCER_HEIGHT / 2));
+                    board.getChildren().addAll(groupExplosion);
+
+                    saucer.getSaucerPassingSound().stop();
+
+                    score.set(score.get() + SAUCER_SCORE_POINTS);
+
+                    saucer100Rect.setX(saucer.getX() + 30);
+                    saucer100Rect.setY(saucer.getY());
+
+                    saucer.setX(X_POS_INIT_SAUCER);
+                    saucer.setY(Y_POS_INIT_SAUCER);
+
+                    Timer timerScoreSaucer = new Timer();
+                    TimerTask timerTask = new TimerTask() {
+                        @Override
+                        public void run() {
+                            saucer100Rect.setX(X_POS_SAUCER_SCORE);
+                        }
+                    };
+                    timerScoreSaucer.schedule(timerTask, 700);
+                }
+            }
+
+        }
+
     }
 
 
@@ -390,8 +429,6 @@ public class SpaceController implements Sounds, Constants, Images {
 
     @FXML
     void onStopAction() {
-
-
 
         timer.stop();
         initStartButton = false;

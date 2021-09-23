@@ -38,5 +38,6 @@ public interface Images {
      Image ALIEN_SHOOT = new Image(PATH + "aliensShoot2.png");
 
      Image SAUCER = new Image(PATH + "saucer.png");
+     Image SAUCER_100 = new Image(PATH + "saucer100.png");
 
 }

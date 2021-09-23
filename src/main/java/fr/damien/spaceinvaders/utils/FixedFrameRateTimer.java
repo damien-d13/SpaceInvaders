@@ -21,7 +21,7 @@ public abstract class FixedFrameRateTimer extends AnimationTimer {
     public FixedFrameRateTimer(double FPSWanted) {
 
         timeNeededBetweenTicks = (long) (NANOS_IN_A_SECOND / FPSWanted);
-        System.out.println(timeNeededBetweenTicks);
+//        System.out.println(timeNeededBetweenTicks);
     }
 
     public double getFrameRate() {return frameRate;}

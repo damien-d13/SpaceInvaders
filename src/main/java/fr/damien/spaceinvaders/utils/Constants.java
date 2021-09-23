@@ -54,9 +54,15 @@ public interface Constants {
 
     /***********************************  SAUCER  ***********************************************/
      int X_POS_INIT_SAUCER = WINDOW_WIDTH;
-     int Y_POS_INIT_SAUCER = 458;
+     int Y_POS_INIT_SAUCER = 15;
      int SAUCER_WIDTH = 42;
      int SAUCER_HEIGHT = 22;
      int SAUCER_DELTA_X = 2;
 
+ /***********************************  SAUCER SCORE RECTANGLE ***********************************************/
+     int X_POS_SAUCER_SCORE = WINDOW_WIDTH;
+     int Y_POS_SAUCER_SCORE = Y_POS_INIT_SAUCER;
+     int SAUCER_SCORE_WIDTH = 42;
+     int SAUCER_SCORE_HEIGHT = 22;
+     int SAUCER_SCORE_POINTS = 100;
 }
