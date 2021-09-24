@@ -11,7 +11,7 @@ public class Saucer extends Entity {
 
 
     private AudioClip saucerPassingSound = new AudioClip(Sounds.SAUCER_PASSING_SOUND);
-    private boolean isOnScreen;
+
 
 
 
@@ -24,16 +24,16 @@ public class Saucer extends Entity {
         super.setFill(super.getImgPattern());
         this.saucerPassingSound.setVolume(0.02);
         this.saucerPassingSound.play();
-        this.isOnScreen = false;
+
         this.isDead = false;
     }
 
     public void saucerMoving(int deltaX) {
-        if (super.getX() > 0 - Constants.SAUCER_WIDTH && super.getX() < Constants.WINDOW_WIDTH + 1) {
+        if (super.getX() > - Constants.SAUCER_WIDTH && super.getX() < Constants.WINDOW_WIDTH + 1) {
             super.setX(super.getX() - deltaX);
-            isOnScreen = true;
+
         } else {
-            isOnScreen = false;
+
             this.saucerPassingSound.stop();
         }
 

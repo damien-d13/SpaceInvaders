@@ -2,9 +2,6 @@ package fr.damien.spaceinvaders;
 
 import fr.damien.spaceinvaders.entities.*;
 import fr.damien.spaceinvaders.utils.*;
-import javafx.animation.AnimationTimer;
-import javafx.animation.Interpolator;
-import javafx.animation.TranslateTransition;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -15,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
+
 
 import java.util.*;
 
@@ -47,7 +44,7 @@ public class SpaceController implements Sounds, Constants, Images {
     private Pane board;
 
     @FXML
-    private Label lblEndGame, lblRightScore, lblLeftScore;
+    private Label lblEndGame, lblRightScore, lblLeftScore, lblFPS;
 
 //    public SpaceController() {
 //        timer = new AnimationTimer() {
@@ -112,6 +109,9 @@ public class SpaceController implements Sounds, Constants, Images {
 
                 aliensShooting();
                 AlienShoot.handleAliensShot(alienShootList, board);
+
+                lblFPS.setVisible(true);
+                lblFPS.setText("FPS : " + getFrameRate());
 //                System.out.println(getFrameRate());
             }
         };
@@ -244,7 +244,7 @@ public class SpaceController implements Sounds, Constants, Images {
 
                 if (!ship.isShipIsShooting()) {
                     ship.setShipIsShooting(true);
-                    shipShoot.shipShootPlacement(shipShoot, ship);
+                    ShipShoot.shipShootPlacement(shipShoot, ship);
                     Audio.playSound(SHIP_SHOOT_SOUND);
                 }
                 break;
@@ -268,9 +268,25 @@ public class SpaceController implements Sounds, Constants, Images {
             for (Alien alien : alienRow) {
                 if (!alien.isDead()) {
                     if (random.nextInt(ALIEN_SHOOT_PROBABILITY) == 50) {
-                        AlienShoot alienShoot = new AlienShoot(alien.getX() + (ALIEN_WIDTH / 2), alien.getY(), ALIEN_SHOOT_WIDTH, ALIEN_SHOOT_HEIGHT);
+                        AlienShoot alienShoot = new AlienShoot(alien.getX() + (float)(ALIEN_WIDTH / 2), alien.getY(), ALIEN_SHOOT_WIDTH, ALIEN_SHOOT_HEIGHT);
                         alienShootList.add(alienShoot);
                         board.getChildren().add(alienShoot);
+
+                        int randomNumber = (int) (Math.round(Math.random() * 3) + 1);
+                        switch (randomNumber) {
+                            case 1:
+                                Audio.playSound(ALIEN_SHOOT_SOUND_1);
+                                break;
+                            case 2:
+                                Audio.playSound(ALIEN_SHOOT_SOUND_2);
+                                break;
+                            case 3:
+                                Audio.playSound(ALIEN_SHOOT_SOUND_3);
+                                break;
+                            case 4:
+                                Audio.playSound(ALIEN_SHOOT_SOUND_4);
+                                break;
+                        }
 
                     }
                 }

@@ -32,7 +32,7 @@
          <children>
             <HBox prefHeight="70.0" prefWidth="600.0">
                <children>
-                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#onStartAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: #08943b;" text="Start" textFill="#08943b">
+                  <Button alignment="BASELINE_CENTER" minWidth="70.0" mnemonicParsing="false" onAction="#onStartAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: #08943b;" text="Start" textFill="#08943b">
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
@@ -43,7 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onStopAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: red;" text="Stop" textFill="RED">
+                  <Button minWidth="70.0" mnemonicParsing="false" onAction="#onStopAction" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: red;" text="Stop" textFill="RED">
                      <HBox.margin>
                         <Insets right="20.0" top="20.0" />
                      </HBox.margin>
@@ -54,15 +54,26 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Label fx:id="lblFPS" minWidth="70.0" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-radius: 10; -fx-border-color: yellow;" text="FPS : " textFill="#eef209" visible="false">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Agency FB Bold" size="18.0" />
+                     </font>
+                  </Label>
                   <Label fx:id="lblLeftScore" text="Score : " textFill="#08943b" visible="false">
                      <HBox.margin>
-                        <Insets left="280.0" top="20.0" />
+                        <Insets left="120.0" top="20.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Agency FB" size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblRightScore" text="0" textFill="#08943b" visible="false">
+                  <Label fx:id="lblRightScore" prefHeight="28.0" prefWidth="50.0" text="0" textFill="#08943b" visible="false">
                      <HBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </HBox.margin>
