@@ -14,7 +14,7 @@ public interface Constants {
      int SHIP_HEIGHT = 24;
      int X_POS_INIT_SHIP = (WINDOW_WIDTH - SHIP_WIDTH) / 2;
      int Y_POS_INIT_ShIP = 500;
-     int SHIP_DELTA_X = 2;
+     int SHIP_DELTA_X = 5;
 
      int SHIP_LEFT_WINDOW_LIMIT = 30;
      int SHIP_RIGHT_WINDOW_LIMIT = 530;
@@ -23,6 +23,7 @@ public interface Constants {
      int SHIP_SHOOT_WIDTH = 10;
      int SHIP_SHOOT_HEIGHT = 10;
      int SHIP_SHOOT_DELTA_Y = 5;
+     int SHIP_SHOOT_ALIEN_SHOOT = 50;
 
     /***********************************  BRICK  ***************************************/
      int BRICK_WIDTH = 10;
@@ -59,10 +60,16 @@ public interface Constants {
      int SAUCER_HEIGHT = 22;
      int SAUCER_DELTA_X = 2;
 
- /***********************************  SAUCER SCORE RECTANGLE ***********************************************/
+    /***********************************  SAUCER SCORE RECTANGLE ***********************************************/
      int X_POS_SAUCER_SCORE = WINDOW_WIDTH;
      int Y_POS_SAUCER_SCORE = Y_POS_INIT_SAUCER;
      int SAUCER_SCORE_WIDTH = 42;
      int SAUCER_SCORE_HEIGHT = 22;
      int SAUCER_SCORE_POINTS = 100;
+
+    /***********************************  SEND GAME ***********************************************/
+    String END_GAME_WIN = "YOU WIN";
+    String END_GAME_LOOSE = "YOU LOOSE";
+
+
 }

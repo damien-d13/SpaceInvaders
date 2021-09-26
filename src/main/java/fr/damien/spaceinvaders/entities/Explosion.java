@@ -50,64 +50,24 @@ public class Explosion {
         ex7.setFitHeight(50);
 
         final ImageView ex8 = new ImageView(Images.EX8);
-        ex8.setFitWidth(50);
-        ex8.setFitHeight(50);
+        ex8.setFitWidth(30);
+        ex8.setFitHeight(30);
 
-        KeyFrame kf1 = new KeyFrame(Duration.millis(80), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex1);
-            }
-        });
+        KeyFrame kf1 = new KeyFrame(Duration.millis(80), actionEvent -> explosionAliens.getChildren().setAll(ex1));
 
-        KeyFrame kf2 = new KeyFrame(Duration.millis(160), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex2);
-            }
-        });
+        KeyFrame kf2 = new KeyFrame(Duration.millis(160), actionEvent -> explosionAliens.getChildren().setAll(ex2));
 
-        KeyFrame kf3 = new KeyFrame(Duration.millis(240), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex3);
-            }
-        });
+        KeyFrame kf3 = new KeyFrame(Duration.millis(240), actionEvent -> explosionAliens.getChildren().setAll(ex3));
 
-        KeyFrame kf4 = new KeyFrame(Duration.millis(320), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex4);
-            }
-        });
+        KeyFrame kf4 = new KeyFrame(Duration.millis(320), actionEvent -> explosionAliens.getChildren().setAll(ex4));
 
-        KeyFrame kf5 = new KeyFrame(Duration.millis(400), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex5);
-            }
-        });
+        KeyFrame kf5 = new KeyFrame(Duration.millis(400), actionEvent -> explosionAliens.getChildren().setAll(ex5));
 
-        KeyFrame kf6 = new KeyFrame(Duration.millis(480), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex6);
-            }
-        });
+        KeyFrame kf6 = new KeyFrame(Duration.millis(480), actionEvent -> explosionAliens.getChildren().setAll(ex6));
 
-        KeyFrame kf7 = new KeyFrame(Duration.millis(560), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex7);
-            }
-        });
+        KeyFrame kf7 = new KeyFrame(Duration.millis(560), actionEvent -> explosionAliens.getChildren().setAll(ex7));
 
-        KeyFrame kf8 = new KeyFrame(Duration.millis(650), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionAliens.getChildren().setAll(ex8);
-            }
-        });
+        KeyFrame kf8 = new KeyFrame(Duration.millis(650), actionEvent -> explosionAliens.getChildren().setAll(ex8));
 
         Timeline timeline = new Timeline();
 //        timeline.setCycleCount(Animation.INDEFINITE);
@@ -120,83 +80,48 @@ public class Explosion {
     public static Group explodeShoot() {
 
         final ImageView exShoot1 = new ImageView(Images.EX_SHOOT_1);
-        exShoot1.setFitWidth(50);
-        exShoot1.setFitHeight(50);
+        exShoot1.setFitWidth(30);
+        exShoot1.setFitHeight(30);
 
         final ImageView exShoot2 = new ImageView(Images.EX_SHOOT_2);
-        exShoot2.setFitWidth(50);
-        exShoot2.setFitHeight(50);
+        exShoot2.setFitWidth(30);
+        exShoot2.setFitHeight(30);
 
         final ImageView exShoot3 = new ImageView(Images.EX_SHOOT_3);
-        exShoot3.setFitWidth(50);
-        exShoot3.setFitHeight(50);
+        exShoot3.setFitWidth(30);
+        exShoot3.setFitHeight(30);
 
         final ImageView exShoot4 = new ImageView(Images.EX_SHOOT_4);
-        exShoot4.setFitWidth(50);
-        exShoot4.setFitHeight(50);
+        exShoot4.setFitWidth(30);
+        exShoot4.setFitHeight(30);
 
         final ImageView exShoot5 = new ImageView(Images.EX_SHOOT_5);
-        exShoot5.setFitWidth(50);
-        exShoot5.setFitHeight(50);
+        exShoot5.setFitWidth(30);
+        exShoot5.setFitHeight(30);
 
         final ImageView exShoot6 = new ImageView(Images.EX_SHOOT_6);
-        exShoot6.setFitWidth(50);
-        exShoot6.setFitHeight(50);
+        exShoot6.setFitWidth(30);
+        exShoot6.setFitHeight(30);
 
         final ImageView exShoot7 = new ImageView(Images.EX_SHOOT_7);
-        exShoot7.setFitWidth(50);
-        exShoot7.setFitHeight(50);
+        exShoot7.setFitWidth(30);
+        exShoot7.setFitHeight(30);
 
 
 
-        KeyFrame kf1 = new KeyFrame(Duration.millis(80), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShoot.getChildren().setAll(exShoot1);
-            }
-        });
+        KeyFrame kf1 = new KeyFrame(Duration.millis(80), actionEvent -> explosionShoot.getChildren().setAll(exShoot1));
 
-        KeyFrame kf2 = new KeyFrame(Duration.millis(160), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShoot.getChildren().setAll(exShoot2);
-            }
-        });
+        KeyFrame kf2 = new KeyFrame(Duration.millis(160), actionEvent -> explosionShoot.getChildren().setAll(exShoot2));
 
-        KeyFrame kf3 = new KeyFrame(Duration.millis(240), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShoot.getChildren().setAll(exShoot3);
-            }
-        });
+        KeyFrame kf3 = new KeyFrame(Duration.millis(240), actionEvent -> explosionShoot.getChildren().setAll(exShoot3));
 
-        KeyFrame kf4 = new KeyFrame(Duration.millis(320), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShoot.getChildren().setAll(exShoot4);
-            }
-        });
+        KeyFrame kf4 = new KeyFrame(Duration.millis(320), actionEvent -> explosionShoot.getChildren().setAll(exShoot4));
 
-        KeyFrame kf5 = new KeyFrame(Duration.millis(400), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShoot.getChildren().setAll(exShoot5);
-            }
-        });
+        KeyFrame kf5 = new KeyFrame(Duration.millis(400), actionEvent -> explosionShoot.getChildren().setAll(exShoot5));
 
-        KeyFrame kf6 = new KeyFrame(Duration.millis(480), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShoot.getChildren().setAll(exShoot6);
-            }
-        });
+        KeyFrame kf6 = new KeyFrame(Duration.millis(480), actionEvent -> explosionShoot.getChildren().setAll(exShoot6));
 
-        KeyFrame kf7 = new KeyFrame(Duration.millis(560), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShoot.getChildren().setAll(exShoot7);
-            }
-        });
+        KeyFrame kf7 = new KeyFrame(Duration.millis(560), actionEvent -> explosionShoot.getChildren().setAll(exShoot7));
 
 
 
@@ -256,12 +181,7 @@ public class Explosion {
         exShip8.setFitHeight(50);
 
 
-        KeyFrame kf1 = new KeyFrame(Duration.millis(80), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                explosionShip.getChildren().setAll(exShip1);
-            }
-        });
+        KeyFrame kf1 = new KeyFrame(Duration.millis(80), actionEvent -> explosionShip.getChildren().setAll(exShip1));
 
         KeyFrame kf2 = new KeyFrame(Duration.millis(160), new EventHandler<ActionEvent>() {
             @Override

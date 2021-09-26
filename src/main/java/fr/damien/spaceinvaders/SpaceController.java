@@ -2,6 +2,7 @@ package fr.damien.spaceinvaders;
 
 import fr.damien.spaceinvaders.entities.*;
 import fr.damien.spaceinvaders.utils.*;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -11,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.shape.Rectangle;
 
 
@@ -112,6 +114,7 @@ public class SpaceController implements Sounds, Constants, Images {
 
                 lblFPS.setVisible(true);
                 lblFPS.setText("FPS : " + getFrameRate());
+                endGame();
 //                System.out.println(getFrameRate());
             }
         };
@@ -217,7 +220,7 @@ public class SpaceController implements Sounds, Constants, Images {
             Initialisation.initWalls(80, 400, 80, walls, board);
             Initialisation.initAliens(aliens, board);
 
-            Initialisation.initSaucer100(saucer100Rect, board );
+            Initialisation.initSaucer100(saucer100Rect, board);
 
             timer.start();
             lblRightScore.textProperty().bind(Bindings.convert(score));
@@ -268,23 +271,31 @@ public class SpaceController implements Sounds, Constants, Images {
             for (Alien alien : alienRow) {
                 if (!alien.isDead()) {
                     if (random.nextInt(ALIEN_SHOOT_PROBABILITY) == 50) {
-                        AlienShoot alienShoot = new AlienShoot(alien.getX() + (float)(ALIEN_WIDTH / 2), alien.getY(), ALIEN_SHOOT_WIDTH, ALIEN_SHOOT_HEIGHT);
+                        AlienShoot alienShoot = new AlienShoot(alien.getX() + (float) (ALIEN_WIDTH / 2), alien.getY(), ALIEN_SHOOT_WIDTH, ALIEN_SHOOT_HEIGHT);
                         alienShootList.add(alienShoot);
                         board.getChildren().add(alienShoot);
 
                         int randomNumber = (int) (Math.round(Math.random() * 3) + 1);
                         switch (randomNumber) {
                             case 1:
-                                Audio.playSound(ALIEN_SHOOT_SOUND_1);
+                                AudioClip alienShoot1 = new AudioClip(ALIEN_SHOOT_SOUND_1);
+                                alienShoot1.setVolume(0.15);
+                                alienShoot1.play();
                                 break;
                             case 2:
-                                Audio.playSound(ALIEN_SHOOT_SOUND_2);
+                                AudioClip alienShoot2 = new AudioClip(ALIEN_SHOOT_SOUND_2);
+                                alienShoot2.setVolume(0.15);
+                                alienShoot2.play();
                                 break;
                             case 3:
-                                Audio.playSound(ALIEN_SHOOT_SOUND_3);
+                                AudioClip alienShoot3 = new AudioClip(ALIEN_SHOOT_SOUND_3);
+                                alienShoot3.setVolume(0.15);
+                                alienShoot3.play();
                                 break;
                             case 4:
-                                Audio.playSound(ALIEN_SHOOT_SOUND_4);
+                                AudioClip alienShoot4 = new AudioClip(ALIEN_SHOOT_SOUND_4);
+                                alienShoot4.setVolume(0.15);
+                                alienShoot4.play();
                                 break;
                         }
 
@@ -385,7 +396,7 @@ public class SpaceController implements Sounds, Constants, Images {
                     board.getChildren().addAll(groupExplosion);
 
                     alien.setX(100);
-                    alien.setY(1000);
+                    alien.setY(-10000);
 
                     alien.setDead(true);
 
@@ -434,6 +445,23 @@ public class SpaceController implements Sounds, Constants, Images {
 
         }
 
+        for (AlienShoot alienShoot : alienShootList) {
+            if (alienShoot.getBoundsInParent().intersects(shipShoot.getBoundsInParent())) {
+
+                board.getChildren().remove(alienShoot);
+                Group explosionShoot = new Group(Explosion.explodeShoot());
+                explosionShoot.setLayoutX(alienShoot.getX() - 10);
+                explosionShoot.setLayoutY(alienShoot.getY() - 10);
+                board.getChildren().addAll(explosionShoot);
+
+                shipShoot.setX(WINDOW_WIDTH);
+                shipShoot.setY(WINDOW_HEIGHT);
+                alienShoot.setX(WINDOW_WIDTH - 100);
+                alienShoot.setY(WINDOW_HEIGHT - 100);
+                score.set(score.getValue() + SHIP_SHOOT_ALIEN_SHOOT);
+            }
+        }
+
     }
 
 
@@ -458,5 +486,38 @@ public class SpaceController implements Sounds, Constants, Images {
         lblLeftScore.setVisible(false);
         lblRightScore.setVisible(false);
         Animation.animateLogoSpaceInvaders(imgLogo, -500, 0, 500, 0, 1, 700);
+    }
+
+    private void endGame() {
+
+        boolean result = Arrays.stream(aliens).allMatch(a -> Arrays.stream(a).allMatch(Alien::isDead));//See again
+
+        if (result == true) {
+            timer.stop();
+            lblEndGame.setText(END_GAME_WIN);
+            board.getChildren().remove(ship);
+            board.getChildren().remove(saucer);
+        }
+
+        if (alienShootList.stream().anyMatch(shootAlien -> shootAlien.getBoundsInParent().intersects(ship.getBoundsInParent()))
+                || Arrays.stream(aliens).anyMatch(a -> Arrays.stream(a).anyMatch(alien -> alien.getBoundsInParent().intersects(ship.getBoundsInParent())))
+                || Arrays.stream(aliens).anyMatch(a -> Arrays.stream(a).anyMatch(alien -> alien.getY() > WINDOW_HEIGHT - WINDOW_MARGIN))) {
+            Group groupExplosionShip = new Group(Explosion.explodeShip());
+            groupExplosionShip.setLayoutX(ship.getX() - (SHIP_WIDTH / 2));
+            groupExplosionShip.setLayoutY(ship.getY() - SHIP_HEIGHT);
+            board.getChildren().addAll(groupExplosionShip);
+            Audio.playSound(SHIP_DESTRUCTION_SOUND);
+
+            timer.stop();
+            lblEndGame.setText(END_GAME_LOOSE);
+            board.getChildren().remove(ship);
+            board.getChildren().remove(saucer);
+            if (saucer != null) {
+                saucer.getSaucerPassingSound().stop();
+            }
+
+
+        }
+
     }
 }
